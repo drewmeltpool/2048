@@ -34,7 +34,7 @@ class Game {
     for (let i = 0; i < this._width; i++) {
       const tmp = [];
       for (let j = 0; j < this._height; j++) {
-        if (this._map[j][i]) tmp.push(this._map[j][i]);
+        if (this._map[j][i]) tmp.push(this._map[j][j]);
       }
 
       const column = [];
