@@ -38,13 +38,10 @@ class Game {
       }
 
       const column = [];
-      for (let j = 0; j < tmp.length; j++) {
+      for (let j = 0; j < tmp.length; j++)
         tmp[j] === tmp[j + 1] ? column.push(2 * tmp[j++]) : column.push(tmp[j]);
-      }
 
-      for (let j = 0; j < this._height; j++) {
-        this._map[j][i] = column[j] || 0;
-      }
+      for (let j = 0; j < this._height; j++) this._map[j][i] = column[j] || 0;
     }
 
     return this._map;
