@@ -1,11 +1,11 @@
 class Game {
-  _map: number[][];
+  map: number[][];
 
   constructor(
     private readonly _width: number,
     private readonly _height: number
   ) {
-    this._map = this._init();
+    this.map = this._init();
   }
 
   private _init() {
@@ -19,22 +19,22 @@ class Game {
   }
 
   public updateCell(x: number, y: number, value: number) {
-    this._map[x][y] = value;
+    this.map[x][y] = value;
   }
 
   public getCell(x: number, y: number) {
-    return this._map[x][y];
+    return this.map[x][y];
   }
 
   public toString() {
-    return this._map.map((row) => row.join(' ')).join('\n');
+    return this.map.map((row) => row.join(' ')).join('\n');
   }
 
   public up() {
     for (let i = 0; i < this._width; i++) {
       const tmp = [];
       for (let j = 0; j < this._height; j++) {
-        if (this._map[j][i]) tmp.push(this._map[j][i]);
+        if (this.map[j][i]) tmp.push(this.map[j][i]);
       }
 
       const column = [];
@@ -43,51 +43,48 @@ class Game {
       }
 
       for (let j = 0; j < this._height; j++) {
-        this._map[j][i] = column[j] || 0;
+        this.map[j][i] = column[j] || 0;
       }
     }
 
-    return this._map;
+    return this.map;
   }
 
   public left() {
-    for (let i = 0; i < this._map.length; i++) {
-      const tmp = this._removeZero(this._map[i]);
+    for (let i = 0; i < this.map.length; i++) {
+      const tmp = this._removeZero(this.map[i]);
       const row = [];
       for (let j = 0; j < tmp.length; j++) {
         tmp[j] === tmp[j + 1] ? row.push(2 * tmp[j++]) : row.push(tmp[j]);
       }
 
-      this._map[i] = [
-        ...row,
-        ...Array(this._map[i].length - row.length).fill(0),
-      ];
+      this.map[i] = [...row, ...Array(this.map[i].length - row.length).fill(0)];
     }
 
-    return this._map;
+    return this.map;
   }
 
   public right() {
-    for (let i = 0; i < this._map.length; i++) {
-      const tmp = this._removeZero(this._map[i]);
+    for (let i = 0; i < this.map.length; i++) {
+      const tmp = this._removeZero(this.map[i]);
       const row = [];
       for (let j = tmp.length - 1; j >= 0; j--) {
         tmp[j] === tmp[j - 1] ? row.push(2 * tmp[j--]) : row.push(tmp[j]);
       }
 
-      this._map[i] = [
-        ...Array(this._map[i].length - row.length).fill(0),
+      this.map[i] = [
+        ...Array(this.map[i].length - row.length).fill(0),
         ...row.reverse(),
       ];
     }
 
-    return this._map;
+    return this.map;
   }
   public down() {
     for (let i = 0; i < this._width; i++) {
       const tmp = [];
       for (let j = 0; j < this._height; j++) {
-        if (this._map[j][i]) tmp.push(this._map[j][i]);
+        if (this.map[j][i]) tmp.push(this.map[j][i]);
       }
 
       const column = [];
@@ -101,11 +98,11 @@ class Game {
       ];
 
       for (let j = 0; j < this._height; j++) {
-        this._map[j][i] = last[j] || 0;
+        this.map[j][i] = last[j] || 0;
       }
     }
 
-    return this._map;
+    return this.map;
   }
 }
 
