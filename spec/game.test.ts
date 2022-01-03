@@ -22,11 +22,12 @@ describe('2048 game', () => {
 
   it('Move to left', () => {
     const expected = [
-      [4, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
+      [4, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ];
-    const game = new Game(3, 3);
+    const game = new Game(4, 4);
 
     game.updateCell(0, 0, 2);
     game.updateCell(0, 1, 2);
@@ -39,12 +40,13 @@ describe('2048 game', () => {
 
   it('Move to up', () => {
     const expected = [
-      [4, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
+      [4, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ];
 
-    const game = new Game(3, 3);
+    const game = new Game(4, 4);
 
     game.updateCell(0, 0, 2);
     game.updateCell(1, 0, 2);
@@ -57,12 +59,13 @@ describe('2048 game', () => {
 
   it('Move to right', () => {
     const expected = [
-      [0, 0, 2],
-      [0, 0, 0],
-      [0, 0, 0],
+      [0, 0, 0, 2],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
     ];
 
-    const game = new Game(3, 3);
+    const game = new Game(4, 4);
 
     game.updateCell(0, 0, 2);
     game.right();
@@ -74,12 +77,13 @@ describe('2048 game', () => {
 
   it('Move to down', () => {
     const expected = [
-      [0, 0, 0],
-      [0, 0, 0],
-      [2, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [2, 0, 0, 0],
     ];
 
-    const game = new Game(3, 3);
+    const game = new Game(4, 4);
 
     game.updateCell(0, 0, 2);
     game.down();
